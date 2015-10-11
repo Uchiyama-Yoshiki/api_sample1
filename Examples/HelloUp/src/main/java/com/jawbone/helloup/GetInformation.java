@@ -1,5 +1,5 @@
 package com.jawbone.helloup;
-////
+
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -9,7 +9,6 @@ import com.jawbone.upplatformsdk.utils.UpPlatformSdkConstants;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
