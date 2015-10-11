@@ -1,5 +1,5 @@
 package com.jawbone.helloup;
-/////
+////
 import android.util.Log;
 
 import com.google.gson.Gson;
