@@ -1,19 +1,15 @@
 package com.jawbone.helloup;
 
 import android.util.Log;
-
 import com.google.gson.Gson;
 import com.jawbone.upplatformsdk.api.ApiManager;
 import com.jawbone.upplatformsdk.utils.UpPlatformSdkConstants;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.HashMap;
-
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
-
 /**
  * Created by yoshiki on 2015/10/06.
  */
