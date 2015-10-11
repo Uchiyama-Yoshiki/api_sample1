@@ -10,7 +10,6 @@ import java.util.HashMap;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
-
 /**
  * Created by yoshiki on 2015/10/06.
  */
