@@ -5,7 +5,6 @@
  */
 package com.jawbone.helloup;
 
-import android.app.Fragment;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,14 +25,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jawbone.upplatformsdk.api.ApiManager;
-import com.jawbone.upplatformsdk.api.RestApiInterface;
 import com.jawbone.upplatformsdk.datamodel.objectResponse;
 import com.jawbone.upplatformsdk.utils.UpPlatformSdkConstants;
 
 import java.util.HashMap;
 
 import retrofit.Callback;
-import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
@@ -49,8 +46,6 @@ public class UpApiListActivity extends ListActivity {
     private String mAccessToken;
     private String mClientSecret;
     public objectResponse res = new objectResponse();
-    public String All =null;
-
 
 
 
@@ -154,16 +149,15 @@ public class UpApiListActivity extends ListActivity {
                         break;
                     case GET_MOVES_EVENTS_LIST:
                         Log.e(TAG, "making Get Move Events List api call ...");
-                        ApiManager.getRestApiInterface().getMoveEventsList(
+                        GetInformation.getNextUrl1();
+                        /*ApiManager.getRestApiInterface().getMoveEventsList(
                                 UpPlatformSdkConstants.API_VERSION_STRING,
                                 getMoveEventsListRequestParams(),
                                 new Callback<Object>() {
                                     @Override
                                     public void success(Object o, Response response) {
                                         GetInformation.getNextURL(o);
-                                        Intent intent = new Intent(UpApiListActivity.this, UserActivity.class);
-                                        intent.putExtra("INPUT", GetInformation.AllUrl);
-                                        startActivity(intent);
+
                                     }
 
                                     @Override
@@ -172,6 +166,8 @@ public class UpApiListActivity extends ListActivity {
                                     }
                                 }
                         );
+                        */
+                        Log.e(TAG, "making Get Move Events List api call ...");
                         break;
                     case GET_MOVES_EVENT:
                         Log.e(TAG, "making Get Move Event api call ...");

@@ -20,17 +20,28 @@ public class GetInformation {
     private static JSONObject json;
     public static String AllUrl = "";
 
+    public static void getNextUrl1(){
+        ApiManager.getRestApiInterface().getMoveEventsList(
+                UpPlatformSdkConstants.API_VERSION_STRING,
+                getMoveEventsListRequestParams(),
+                new Callback<Object>() {
+                    @Override
+                    public void success(Object o, Response response) {
+                        getNextURL(o);
+                    }
 
+                    @Override
+                    public void failure(RetrofitError error) {
+                    }
+                }
+        );
+    }
 
     public static void getNextURL(Object o) {
         String nextUrl = "";
         try {
             json = new JSONObject(gson.toJson(o));
             nextUrl = json.getJSONObject("data").getJSONObject("links").getString("next");
-            //dataString = json.getString("data");
-            Log.e(TAG, nextUrl);
-            System.out.print(nextUrl);
-            AllUrl = AllUrl + nextUrl +"\n";
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -50,6 +61,9 @@ public class GetInformation {
                     }
             );
         }
+
+        AllUrl = AllUrl + nextUrl +"\n";
+        Log.d(TAG,nextUrl);
     }
 
     public static HashMap<String, Integer> getQueryMap(String query)
