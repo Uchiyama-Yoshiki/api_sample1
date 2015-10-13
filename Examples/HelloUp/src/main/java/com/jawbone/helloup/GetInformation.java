@@ -18,7 +18,39 @@ public class GetInformation {
 
     private static Gson gson = new Gson();
     private static JSONObject json;
-    private static String AllUrl = "";
+    public static String AllUrl = "";
+
+
+
+    public static void getNextURL(Object o) {
+        String nextUrl = "";
+        try {
+            json = new JSONObject(gson.toJson(o));
+            nextUrl = json.getJSONObject("data").getJSONObject("links").getString("next");
+            //dataString = json.getString("data");
+            Log.e(TAG, nextUrl);
+            System.out.print(nextUrl);
+            AllUrl = AllUrl + nextUrl +"\n";
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if(nextUrl != "") {
+            ApiManager.getRestApiInterface().getMoveEventsList(
+                    UpPlatformSdkConstants.API_VERSION_STRING,
+                    getQueryMap(nextUrl),
+                    new Callback<Object>() {
+                        @Override
+                        public void success(Object o, Response response) {
+                            getNextURL(o);
+                        }
+
+                        @Override
+                        public void failure(RetrofitError error) {
+                        }
+                    }
+            );
+        }
+    }
 
     public static HashMap<String, Integer> getQueryMap(String query)
     {
@@ -31,39 +63,6 @@ public class GetInformation {
 
         return map;
     }
-
-    public static String getNextURL(Object o) {
-        String nextUrl = "";
-        try {
-            json = new JSONObject(gson.toJson(o));
-            nextUrl = json.getJSONObject("data").getJSONObject("links").getString("next");
-            //dataString = json.getString("data");
-            Log.e(TAG, nextUrl);
-            System.out.print(nextUrl);
-            AllUrl = AllUrl + nextUrl +"\n";
-
-            ApiManager.getRestApiInterface().getMoveEventsList(
-                    UpPlatformSdkConstants.API_VERSION_STRING,
-                    getQueryMap(nextUrl),
-                    new Callback<Object>() {
-                        @Override
-                        public void success(Object o, Response response) {
-                            getNextURL(o);
-                        }
-                        @Override
-                        public void failure(RetrofitError error) {
-
-                        }
-                    }
-            );
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-     return AllUrl;
-    }
-
     private static HashMap<String, Integer> getMoveEventsListRequestParams() {
         HashMap<String, Integer> queryHashMap = new HashMap<String, Integer>();
 

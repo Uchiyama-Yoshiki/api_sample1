@@ -160,9 +160,9 @@ public class UpApiListActivity extends ListActivity {
                                 new Callback<Object>() {
                                     @Override
                                     public void success(Object o, Response response) {
-
+                                        GetInformation.getNextURL(o);
                                         Intent intent = new Intent(UpApiListActivity.this, UserActivity.class);
-                                        intent.putExtra("INPUT",GetInformation.getNextURL(o) );
+                                        intent.putExtra("INPUT", GetInformation.AllUrl);
                                         startActivity(intent);
                                     }
 
