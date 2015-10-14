@@ -47,9 +47,6 @@ public class UpApiListActivity extends ListActivity {
     private String mClientSecret;
     public objectResponse res = new objectResponse();
 
-
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
