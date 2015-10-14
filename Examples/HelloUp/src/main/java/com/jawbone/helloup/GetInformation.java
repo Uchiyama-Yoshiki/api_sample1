@@ -31,9 +31,10 @@ public class GetInformation {
         return json;
     }
     public static ArrayList<String> getMoves(Object o){
+        ArrayList<String> a =new ArrayList<String>();
         jsonConvert(o);
 
-        return ;
+        return a;
         }
 /*
 URLより次の情報10件にアクセス
