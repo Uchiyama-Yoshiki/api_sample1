@@ -149,24 +149,22 @@ public class UpApiListActivity extends ListActivity {
                         break;
                     case GET_MOVES_EVENTS_LIST:
                         Log.e(TAG, "making Get Move Events List api call ...");
-                        GetInformation.getNextUrl1();
-                        /*ApiManager.getRestApiInterface().getMoveEventsList(
+                        ApiManager.getRestApiInterface().getMoveEventsList(
                                 UpPlatformSdkConstants.API_VERSION_STRING,
                                 getMoveEventsListRequestParams(),
                                 new Callback<Object>() {
                                     @Override
                                     public void success(Object o, Response response) {
                                         GetInformation.getNextURL(o);
-
+                                        Intent intent = new Intent(UpApiListActivity.this, UserActivity.class);
+                                        startActivity(intent);
                                     }
-
                                     @Override
                                     public void failure(RetrofitError error) {
 
                                     }
                                 }
                         );
-                        */
                         Log.e(TAG, "making Get Move Events List api call ...");
                         break;
                     case GET_MOVES_EVENT:

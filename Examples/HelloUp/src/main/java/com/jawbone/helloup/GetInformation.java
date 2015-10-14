@@ -18,25 +18,10 @@ public class GetInformation {
 
     private static Gson gson = new Gson();
     private static JSONObject json;
-    public static String AllUrl = "";
 
-    public static void getNextUrl1(){
-        ApiManager.getRestApiInterface().getMoveEventsList(
-                UpPlatformSdkConstants.API_VERSION_STRING,
-                getMoveEventsListRequestParams(),
-                new Callback<Object>() {
-                    @Override
-                    public void success(Object o, Response response) {
-                        getNextURL(o);
-                    }
-
-                    @Override
-                    public void failure(RetrofitError error) {
-                    }
-                }
-        );
-    }
-
+/*
+URLより次の情報10件にアクセス
+ */
     public static void getNextURL(Object o) {
         String nextUrl = "";
         try {
@@ -54,15 +39,12 @@ public class GetInformation {
                         public void success(Object o, Response response) {
                             getNextURL(o);
                         }
-
                         @Override
                         public void failure(RetrofitError error) {
                         }
                     }
             );
         }
-
-        AllUrl = AllUrl + nextUrl +"\n";
         Log.d(TAG,nextUrl);
     }
 
@@ -77,19 +59,4 @@ public class GetInformation {
 
         return map;
     }
-    private static HashMap<String, Integer> getMoveEventsListRequestParams() {
-        HashMap<String, Integer> queryHashMap = new HashMap<String, Integer>();
-
-        //uncomment to add as needed parameters
-//        queryHashMap.put("date", "<insert-date>");
-//        queryHashMap.put("page_token", );
-//        queryHashMap.put("start_time", "<insert-time>");
-//        queryHashMap.put("end_time", "<insert-time>");
-//        queryHashMap.put("updated_after", "<insert-time>");
-
-        return queryHashMap;
-    }
-
-
-
 }

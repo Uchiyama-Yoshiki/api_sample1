@@ -39,10 +39,10 @@ public class UserActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        Intent intent=getIntent();
-        String input = intent.getStringExtra("INPUT");
+//        Intent intent=getIntent();
+//        String input = intent.getStringExtra("INPUT");
         TextView textview =(TextView) findViewById(R.id.textView);
-        textview.setText(input);
+        textview.setText(GetInformation.AllUrl);
      }
 
 }
