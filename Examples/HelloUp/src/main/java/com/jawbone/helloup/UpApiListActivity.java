@@ -34,13 +34,11 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-
 /**
  * Activity that provides a list view of all the API calls available
  * for UP Platform
  */
 public class UpApiListActivity extends ListActivity {
-
     private static final String TAG = UpApiListActivity.class.getSimpleName();
 
     private String mAccessToken;
@@ -153,6 +151,7 @@ public class UpApiListActivity extends ListActivity {
                                     @Override
                                     public void success(Object o, Response response) {
                                         GetInformation.getNextURL(o);
+
                                         Intent intent = new Intent(UpApiListActivity.this, UserActivity.class);
                                         startActivity(intent);
                                     }
