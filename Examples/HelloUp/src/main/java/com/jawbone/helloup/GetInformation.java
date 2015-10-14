@@ -6,6 +6,8 @@ import com.jawbone.upplatformsdk.api.ApiManager;
 import com.jawbone.upplatformsdk.utils.UpPlatformSdkConstants;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -17,16 +19,29 @@ public class GetInformation {
     private static final String TAG = UpApiListActivity.class.getSimpleName();
 
     private static Gson gson = new Gson();
-    private static JSONObject json;
+    private static JSONObject json= new JSONObject();
+    public static String AllUrl;
 
+    public static JSONObject jsonConvert(Object o){
+        try {
+            json = new JSONObject(gson.toJson(o));
+         } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return json;
+    }
+    public static ArrayList<String> getMoves(Object o){
+        jsonConvert(o);
+
+        return ;
+        }
 /*
 URLより次の情報10件にアクセス
  */
     public static void getNextURL(Object o) {
         String nextUrl = "";
         try {
-            json = new JSONObject(gson.toJson(o));
-            nextUrl = json.getJSONObject("data").getJSONObject("links").getString("next");
+            nextUrl = jsonConvert(0).getJSONObject("data").getJSONObject("links").getString("next");
         } catch (JSONException e) {
             e.printStackTrace();
         }
