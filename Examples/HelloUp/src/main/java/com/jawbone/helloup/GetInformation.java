@@ -20,7 +20,7 @@ public class GetInformation {
     private static JSONObject json;
 
 /*
-URL‚æ‚èŸ‚Ìî•ñ10Œ‚ÉƒAƒNƒZƒX
+URLï¿½ï¿½èŸï¿½Ìï¿½ï¿½10ï¿½ï¿½ï¿½ÉƒAï¿½Nï¿½Zï¿½X
  */
     public static void getNextURL(Object o) {
         String nextUrl = "";
