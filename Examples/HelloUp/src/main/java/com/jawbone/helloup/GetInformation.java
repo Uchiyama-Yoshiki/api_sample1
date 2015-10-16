@@ -37,7 +37,7 @@ public class GetInformation {
         return a;
         }
 /*
-URL��莟�̏��10���ɃA�N�Z�X
+get a nexturl from URl.
  */
     public static void getNextURL(Object o) {
         String nextUrl = "";
