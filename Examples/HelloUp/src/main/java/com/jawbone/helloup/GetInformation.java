@@ -21,7 +21,9 @@ public class GetInformation {
     private static Gson gson = new Gson();
     private static JSONObject json= new JSONObject();
     public static String AllUrl;
-
+/*
+Object -> JSONObject
+ */
     public static JSONObject jsonConvert(Object o){
         try {
             json = new JSONObject(gson.toJson(o));
@@ -30,11 +32,18 @@ public class GetInformation {
         }
         return json;
     }
-    public static ArrayList<String> getMoves(Object o){
-        ArrayList<String> a =new ArrayList<String>();
-        jsonConvert(o);
 
-        return a;
+    public static ArrayList<String> getMoves(Object o){
+        ArrayList<String> movesList = new ArrayList<String>();
+        JSONObject jsonMove  = jsonConvert(o);
+        try {
+            AllUrl = jsonMove.getJSONObject("data").getJSONObject("items").getString("data");
+            System.out.println(AllUrl);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return movesList;
         }
 /*
 get a nexturl from URl.
@@ -42,7 +51,7 @@ get a nexturl from URl.
     public static void getNextURL(Object o) {
         String nextUrl = "";
         try {
-            nextUrl = jsonConvert(0).getJSONObject("data").getJSONObject("links").getString("next");
+            nextUrl = jsonConvert(o).getJSONObject("data").getJSONObject("links").getString("next");
         } catch (JSONException e) {
             e.printStackTrace();
         }

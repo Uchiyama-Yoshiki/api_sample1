@@ -149,8 +149,8 @@ public class UpApiListActivity extends ListActivity {
                                 getMoveEventsListRequestParams(),
                                 new Callback<Object>() {
                                     @Override
-                                    public void success(Object o, Response response) {
-                                        GetInformation.getNextURL(o);
+                                    public void success(Object o, Response response) {;
+                                        GetInformation.getMoves(o);
 
                                         Intent intent = new Intent(UpApiListActivity.this, UserActivity.class);
                                         startActivity(intent);
