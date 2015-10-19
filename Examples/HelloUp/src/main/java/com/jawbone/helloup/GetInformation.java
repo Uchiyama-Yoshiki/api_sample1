@@ -44,7 +44,18 @@ Object -> JSONObject
             JSONArray items = jsonMove.getJSONObject("data").getJSONArray("items");
             for(int i = 0; i < items.length(); i++) {
                 JSONObject item =items.getJSONObject(i);
-                System.out.print(item);
+                JSONObject details = item.getJSONObject("details");
+                String date = item.getString("date");
+                String active_time = details.getString("active_time");
+                String bg_calories = details.getString("bg_calories");
+                String wo_calories = details.getString("wo_calories");
+                String steps = details.getString("steps");
+                String calories = details.getString("calories");
+                String bmr_day = details.getString("bmr_day");
+
+
+                System.out.print(date + "\n" + active_time + "\n" + bg_calories + "\n" +
+                        wo_calories + "\n" + steps + "\n" + calories + "\n" + bmr_day);
             }
         } catch (JSONException e) {
             e.printStackTrace();
