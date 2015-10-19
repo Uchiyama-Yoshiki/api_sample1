@@ -4,6 +4,8 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.jawbone.upplatformsdk.api.ApiManager;
 import com.jawbone.upplatformsdk.utils.UpPlatformSdkConstants;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,25 +26,29 @@ public class GetInformation {
 /*
 Object -> JSONObject
  */
-    public static JSONObject jsonConvert(Object o){
+    public static JSONObject jsonConvert(Object o) {
         try {
             json = new JSONObject(gson.toJson(o));
-         } catch (JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         return json;
     }
+/*
 
+*/
     public static ArrayList<String> getMoves(Object o){
         ArrayList<String> movesList = new ArrayList<String>();
         JSONObject jsonMove  = jsonConvert(o);
         try {
-            AllUrl = jsonMove.getJSONObject("data").getJSONObject("items").getString("data");
-            System.out.println(AllUrl);
+            JSONArray items = jsonMove.getJSONObject("data").getJSONArray("items");
+            for(int i = 0; i < items.length(); i++) {
+                JSONObject item =items.getJSONObject(i);
+                System.out.print(item);
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         return movesList;
         }
 /*
